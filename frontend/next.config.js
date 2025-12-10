@@ -9,11 +9,13 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    const rootPath = path.resolve(process.cwd())
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.join(__dirname),
+      '@': rootPath,
     }
+    config.resolve.modules = [rootPath, 'node_modules']
     return config
   },
 }
