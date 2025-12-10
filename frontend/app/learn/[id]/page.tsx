@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
-import { lessonsAPI, dashboardAPI } from '../../../lib/api'
+import { lessonsAPI, dashboardAPI } from '@/lib/api'
 import toast from 'react-hot-toast'
 import Link from 'next/link'
 
