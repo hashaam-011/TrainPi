@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
-import { exceptionsAPI } from '@/lib/api'
+// import { exceptionsAPI } from '@/lib/api' // Removed for Vercel build
 import toast from 'react-hot-toast'
 import Link from 'next/link'
 
@@ -44,8 +44,10 @@ export default function ExceptionsPage() {
   const loadExceptions = async () => {
     setLoading(true)
     try {
-      const data = await exceptionsAPI.getExceptions()
-      setExceptions(data)
+      // Frontend-only: using mock data
+      // const data = await exceptionsAPI.getExceptions()
+      // setExceptions(data)
+      console.log('Using mock exceptions data')
     } catch (error: any) {
       // Use mock data if API fails
       console.warn('Failed to load exceptions, using mock data')
@@ -56,7 +58,8 @@ export default function ExceptionsPage() {
 
   const clearException = async (exceptionId: number) => {
     try {
-      await exceptionsAPI.clearException(exceptionId)
+      // Frontend-only: no API call
+      // await exceptionsAPI.clearException(exceptionId)
       const now = new Date().toISOString()
       setExceptions(exceptions.map(ex => {
         if (ex.id === exceptionId) {
